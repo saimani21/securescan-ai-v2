@@ -1,0 +1,136 @@
+.
+├── .github
+│   ├── actions
+│   │   ├── securescan
+│   │   │   └── action.yml
+│   │   └── securescan-ai
+│   └── workflows
+│       ├── securescan-pr.yml
+│       ├── security-scan-basic.yml
+│       ├── security-scan-full.yml
+│       ├── security-scan-pr.yml
+│       ├── security.yml
+│       └── test-action.yml
+├── .gitignore
+├── .securescan.example.yml
+├── INSTALL.md
+├── MANIFEST.in
+├── action.yml
+├── build
+│   ├── bdist.linux-x86_64
+│   └── lib
+│       └── securescan
+│           ├── __init__.py
+│           ├── cli
+│           │   ├── __init__.py
+│           │   ├── config_cmd.py
+│           │   ├── main.py
+│           │   ├── output.py
+│           │   └── output_formatters.py
+│           ├── core
+│           │   ├── __init__.py
+│           │   ├── scanner.py
+│           │   ├── secrets_detector.py
+│           │   └── semgrep_runner.py
+│           ├── enrichment
+│           │   ├── __init__.py
+│           │   ├── cache_manager.py
+│           │   ├── cve_mapper.py
+│           │   ├── cvss_calculator.py
+│           │   ├── enrichment_engine.py
+│           │   ├── nvd_client.py
+│           │   └── threat_intel.py
+│           ├── github
+│           │   ├── __init__.py
+│           │   ├── pr_commenter.py
+│           │   ├── sarif_generator.py
+│           │   └── status_checker.py
+│           ├── llm
+│           │   ├── __init__.py
+│           │   ├── base_client.py
+│           │   ├── openai_client.py
+│           │   ├── prompts.py
+│           │   └── validator.py
+│           ├── utils
+│           │   ├── __init__.py
+│           │   ├── config.py
+│           │   ├── env_loader.py
+│           │   ├── exceptions.py
+│           │   └── logger.py
+│           └── version.py
+├── config.example.yml
+├── configs
+│   ├── prompts
+│   └── semgrep
+│       └── custom-secrets.yaml
+├── docs
+│   └── github-action-documentation.md
+├── examples
+├── install.sh
+├── project-structure.txt
+├── pyproject.toml
+├── requirements
+│   ├── base.txt
+│   └── dev.txt
+├── run_scan.py
+├── scripts
+│   └── verify-action.sh
+├── setup.py
+├── src
+│   └── securescan
+│       ├── __init__.py
+│       ├── cli
+│       │   ├── __init__.py
+│       │   ├── config_cmd.py
+│       │   ├── main.py
+│       │   ├── output.py
+│       │   ├── output_formatters.py
+│       │   └── setup.py
+│       ├── core
+│       │   ├── __init__.py
+│       │   ├── scanner.py
+│       │   ├── secrets_detector.py
+│       │   └── semgrep_runner.py
+│       ├── enrichment
+│       │   ├── __init__.py
+│       │   ├── cache_manager.py
+│       │   ├── cve_mapper.py
+│       │   ├── cvss_calculator.py
+│       │   ├── enrichment_engine.py
+│       │   ├── nvd_client.py
+│       │   └── threat_intel.py
+│       ├── filters
+│       ├── github
+│       │   ├── __init__.py
+│       │   ├── pr_commenter.py
+│       │   ├── sarif_generator.py
+│       │   └── status_checker.py
+│       ├── integrations
+│       ├── llm
+│       │   ├── __init__.py
+│       │   ├── base_client.py
+│       │   ├── openai_client.py
+│       │   ├── prompts.py
+│       │   └── validator.py
+│       ├── output
+│       ├── risk
+│       ├── utils
+│       │   ├── __init__.py
+│       │   ├── config.py
+│       │   ├── env_loader.py
+│       │   ├── exceptions.py
+│       │   └── logger.py
+│       └── version.py
+└── tests
+    ├── fixtures
+    ├── integration
+    │   └── test_full_pipeline.py
+    ├── performance
+    ├── test_github_action.py
+    ├── test_week7_integration.py
+    ├── test_with_mock_github.py
+    └── unit
+        ├── test_config.py
+        └── test_exceptions.py
+
+40 directories, 94 files
