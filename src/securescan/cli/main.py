@@ -14,7 +14,8 @@ from ..utils.logger import get_logger, setup_logging
 from ..utils.config import Config, init_config
 from ..utils.exceptions import SecureScanError, ConfigError, ScanError
 from ..version import VERSION
-
+from click.testing import CliRunner
+from securescan.cli.main import cli
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -192,8 +193,14 @@ def scan(ctx, target, severity, output, output_file, max_findings, llm, llm_mode
         console.print(f"\n[bold red]❌ Unexpected Error:[/bold red] {e}")
         logger.error(f"Unexpected error: {e}", exc_info=True)
         sys.exit(3)
+#changed
+def test_cli_version():
+    runner = CliRunner()
+    result = runner.invoke(cli, ["--version"])
+    assert result.exit_code == 0
+    assert "SecureScan AI" in result.output
 
-
+    #cahnged
 def _determine_exit_code(result, fail_on: str) -> int:
     """Determine exit code based on findings."""
     if not result.success:
