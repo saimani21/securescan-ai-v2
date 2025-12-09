@@ -1,0 +1,43 @@
+name: Full Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout SecureScan AI repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install SecureScan AI (local)
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements/base.txt
+          pip install .
+
+      - name: Run SecureScan AI against this repo
+        run: |
+          source .venv/bin/activate
+          # Generate SARIF but DON'T fail the job if vulnerabilities are found
+          secscan scan src/securescan \
+            --severity HIGH --severity CRITICAL \
+            --output-format sarif \
+            --output-file securescan-results.sarif || true
+
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: securescan-results.sarif
+
