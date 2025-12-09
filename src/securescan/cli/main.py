@@ -15,7 +15,6 @@ from ..utils.config import Config, init_config
 from ..utils.exceptions import SecureScanError, ConfigError, ScanError
 from ..version import VERSION
 from click.testing import CliRunner
-from securescan.cli.main import cli
 try:
     from dotenv import load_dotenv
     load_dotenv()
